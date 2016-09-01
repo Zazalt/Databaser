@@ -1,0 +1,38 @@
+{
+    "name": "zazalt/databaser",
+    "description": "Databaser",
+    "homepage": "https://github.com/Zazalt/Databaser",
+    "keywords": [
+        "string"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zazalt",
+            "email": "example@example.com",
+            "homepage": "https://github.com/Zazalt/Databaser"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zazalt\\Databaser\\": "src/"
+        }
+    },
+    "extra": {
+        "zazalt": {
+            "language": "php",
+            "title": "Databaser",
+            "description": [
+                "Databaser is a PHP library/package to 'translate' a database to array."
+            ],
+            "github": "Zazalt",
+            "repository": "Databaser",
+            "version": "beta",
+            "generateUsage": false,
+            "examples": true
+        }
+    }
+}
