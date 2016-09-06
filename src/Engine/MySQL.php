@@ -2,13 +2,9 @@
 
 namespace Zazalt\Databaser\Engine;
 
-class MySQL implements \Zazalt\Datanase\Extension\DatabaseInterface
+class MySQL implements \Zazalt\Databaser\Extension\EngineInterface
 {
     public function connect()
-    {
-    }
-
-    public function run()
     {
     }
 
@@ -16,7 +12,11 @@ class MySQL implements \Zazalt\Datanase\Extension\DatabaseInterface
     {
     }
 
-    public function getRows()
+    public function getTableRows($tableName)
+    {
+    }
+
+    public function run()
     {
     }
 }
