@@ -17,7 +17,7 @@ class Databaser extends \Zazalt\Databaser\Extension\DatabaserSetters
     /**
      * Returns the *Singleton* instance of this class.
      *
-     * @return Singleton The *Singleton* instance.
+     * @return $this
      */
     public static function getInstance()
     {
@@ -32,7 +32,7 @@ class Databaser extends \Zazalt\Databaser\Extension\DatabaserSetters
     {
         switch($this->engine) {
             case self::ENGINE_PMYSQL:
-                $this->strategy = new \MySQL();
+                $this->strategy = new \Zazalt\Databaser\Engine\MySQL($this);
                 break;
 
             case self::ENGINE_POSTGRESQL:
@@ -40,6 +40,6 @@ class Databaser extends \Zazalt\Databaser\Extension\DatabaserSetters
                 break;
         }
 
-        return $this->strategy->run();
+        return $this->strategy->run($this);
     }
 }

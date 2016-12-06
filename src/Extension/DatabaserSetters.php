@@ -11,6 +11,10 @@ class DatabaserSetters
     public $password    =   null;
     public $database    =   null;
 
+    /**
+     * @param $host string
+     * @return $this
+     */
     public function setHost($host)
     {
         $this->host = $host;
@@ -18,6 +22,10 @@ class DatabaserSetters
         return $this;
     }
 
+    /**
+     * @param $port integer
+     * @return $this
+     */
     public function setPort($port)
     {
         $this->port = $port;
@@ -25,6 +33,10 @@ class DatabaserSetters
         return $this;
     }
 
+    /**
+     * @param $engine   string
+     * @return $this
+     */
     public function setEngine($engine)
     {
         $this->engine = $engine;
@@ -32,6 +44,10 @@ class DatabaserSetters
         return $this;
     }
 
+    /**
+     * @param $username string
+     * @return $this
+     */
     public function setUsername($username)
     {
         $this->username = $username;
@@ -39,6 +55,10 @@ class DatabaserSetters
         return $this;
     }
 
+    /**
+     * @param $password string
+     * @return $this
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -46,6 +66,10 @@ class DatabaserSetters
         return $this;
     }
 
+    /**
+     * @param $database string
+     * @return $this
+     */
     public function setDatabase($database)
     {
         $this->database = $database;

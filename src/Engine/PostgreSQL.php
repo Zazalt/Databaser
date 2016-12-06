@@ -2,23 +2,22 @@
 
 namespace Zazalt\Databaser\Engine;
 
+use Zazalt\Databaser\Databaser;
+
 class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
 {
-    private $entityMaker;
+    private $Databaser;
     private $connection;
-
-    private $tables;
     private $entities;
 
-    public function __construct($entityMaker)
+    public function __construct(Databaser $Databaser)
     {
-        $this->entityMaker = $entityMaker;
+        $this->Databaser = $Databaser;
     }
 
     public function connect()
     {
-        $dsn = "pgsql:host={$this->entityMaker->host};port={$this->entityMaker->port};dbname={$this->entityMaker->database};user={$this->entityMaker->username};password={$this->entityMaker->password}";
-
+        $dsn = "pgsql:host={$this->Databaser->host};port={$this->Databaser->port};dbname={$this->Databaser->database};user={$this->Databaser->username};password={$this->Databaser->password}";
         $this->connection = new \PDO($dsn);
     }
 
@@ -71,7 +70,7 @@ class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
     {
         $statement = $this->connection->prepare("SELECT * FROM information_schema.tables WHERE table_catalog = :database AND table_schema = 'public'");
         $statement->execute([
-            ':database' => $this->entityMaker->database
+            ':database' => $this->Databaser->database
         ]);
 
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -84,7 +83,7 @@ class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
     {
         $statement = $this->connection->prepare("SELECT * FROM information_schema.columns WHERE table_catalog = :database AND table_name = :table");
         $statement->execute([
-            ':database' => $this->entityMaker->database,
+            ':database' => $this->Databaser->database,
             ':table'    => $tableName
         ]);
 
@@ -146,7 +145,7 @@ class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
 
                 $statement = $this->connection->prepare("SELECT * FROM information_schema.constraint_column_usage WHERE constraint_catalog = :database AND constraint_name = :foreignKey");
                 $statement->execute([
-                    ':database'     => $this->entityMaker->database,
+                    ':database'     => $this->Databaser->database,
                     ':foreignKey'   => $foreignKey['constraint_name'],
                 ]);
                 $result = $statement->fetch(\PDO::FETCH_ASSOC);
@@ -159,7 +158,7 @@ class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
 
                 $statement = $this->connection->prepare("SELECT * FROM information_schema.referential_constraints WHERE constraint_catalog = :database AND constraint_name = :foreignKey");
                 $statement->execute([
-                    ':database'     => $this->entityMaker->database,
+                    ':database'     => $this->Databaser->database,
                     ':foreignKey'   => $foreignKey['constraint_name'],
                 ]);
                 $result = $statement->fetch(\PDO::FETCH_ASSOC);
