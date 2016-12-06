@@ -4,8 +4,8 @@ namespace Zazalt\Databaser;
 
 class Databaser extends \Zazalt\Databaser\Extension\DatabaserSetters
 {
-    const ENGINE_POSTGRESQL = 'postgresql';
-    const ENGINE_PMYSQL     = 'mysql';
+    const ENGINE_POSTGRESQL = 'postgresql'; // Default port: 5432
+    const ENGINE_MYSQL      = 'mysql';      // Default port: 3306
 
     private $strategy;
 
@@ -31,7 +31,7 @@ class Databaser extends \Zazalt\Databaser\Extension\DatabaserSetters
     public function run()
     {
         switch($this->engine) {
-            case self::ENGINE_PMYSQL:
+            case self::ENGINE_MYSQL:
                 $this->strategy = new \Zazalt\Databaser\Engine\MySQL($this);
                 break;
 
