@@ -2,11 +2,10 @@
 
 namespace Zazalt\Databaser;
 
+use Zazalt\Omen\Omen;
+
 class Databaser extends \Zazalt\Databaser\Extension\DatabaserSetters
 {
-    const ENGINE_POSTGRESQL = 'postgresql'; // Default port: 5432
-    const ENGINE_MYSQL      = 'mysql';      // Default port: 3306
-
     private $strategy;
 
     /**
@@ -31,11 +30,11 @@ class Databaser extends \Zazalt\Databaser\Extension\DatabaserSetters
     public function run()
     {
         switch($this->engine) {
-            case self::ENGINE_MYSQL:
+            case Omen::ENGINE_MYSQL:
                 $this->strategy = new \Zazalt\Databaser\Engine\MySQL($this);
                 break;
 
-            case self::ENGINE_POSTGRESQL:
+            case Omen::ENGINE_POSTGRESQL:
                 $this->strategy = new \Zazalt\Databaser\Engine\PostgreSQL($this);
                 break;
         }

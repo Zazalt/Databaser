@@ -17,7 +17,7 @@ Requirements
 
 Packagist Dependencies
 ---------------
-* None
+* [zazalt/omen](https://github.com/zazalt/omen)
 
 Installation
 ---------------
