@@ -70,7 +70,7 @@ class MySQL implements \Zazalt\Databaser\Extension\EngineInterface
     /**
      * Get all rows for all tables
      */
-    public function getTableRows($tableName)
+    public function getTableRows(string $tableName)
     {
         $statement = $this->connection->prepare("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = :database AND TABLE_NAME = :table");
         $statement->execute([
