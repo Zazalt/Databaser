@@ -79,7 +79,7 @@ class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
     /**
      * Get all rows for all tables
      */
-    public function getTableRows($tableName)
+    public function getTableRows(string $tableName)
     {
         $statement = $this->connection->prepare("SELECT * FROM information_schema.columns WHERE table_catalog = :database AND table_name = :table");
         $statement->execute([
@@ -90,7 +90,7 @@ class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function checkPrimaryKey($tableName, $rowName)
+    public function checkPrimaryKey(string $tableName, string $rowName)
     {
         $foreignKeys = $this->getForeignKeys($tableName, $rowName);
 
@@ -109,7 +109,7 @@ class PostgreSQL implements \Zazalt\Databaser\Extension\EngineInterface
         return 0;
     }
 
-    public function checkUniqueKey($tableName, $rowName)
+    public function checkUniqueKey(string $tableName, string $rowName)
     {
         $foreignKeys = $this->getForeignKeys($tableName, $rowName);
 
